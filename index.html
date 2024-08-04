@@ -1,0 +1,143 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="initial-scale=1,maximum-scale=1,user-scalable=no"
+    />
+    <title>Draw Icons on Map with ArcGIS API for JavaScript</title>
+    <link
+      rel="stylesheet"
+      href="https://js.arcgis.com/4.29/esri/themes/light/main.css"
+    />
+    <script src="https://js.arcgis.com/4.29/"></script>
+    <script src="app.js"></script>
+    <style>
+      #viewDiv {
+        padding: 0;
+        margin: 0;
+        height: 100vh;
+        width: 100%;
+      }
+
+      .controls {
+        height: 227px;
+        width: 200px;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        z-index: 1000;
+        background-color: #fff;
+      }
+
+      .Draw,
+      .Clear {
+        display: flex;
+        flex-direction: column;
+        padding: 5px;
+        border-bottom: 1px solid gray;
+      }
+
+      button {
+        border: none;
+        color: gray;
+        background-color: #fff;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: lightgray;
+      }
+
+      .radius {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 10px 0;
+        border-bottom: 1px solid gray;
+      }
+
+      p {
+        font-size: 12px;
+        color: gray;
+        margin: 5px 0;
+      }
+
+      .slider {
+        width: 150px;
+        -webkit-appearance: none;
+        background-color: #ccc;
+        height: 5px;
+        border-radius: 5px;
+        margin-bottom: 10px;
+      }
+
+      .slider::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        width: 15px;
+        height: 15px;
+        background-color: #1a0f0f;
+        border-radius: 50%;
+        cursor: pointer;
+        -webkit-transition: 0.2s;
+      }
+
+      .slider::-webkit-slider-thumb:hover {
+        background-color: rgb(109, 107, 107);
+      }
+
+      #radiusValue {
+        font-size: 14px;
+        color: gray;
+      }
+
+      button.active {
+        background: #e9d8c0;
+      }
+
+      .search {
+        display: flex;
+        justify-content: center;
+        padding: 5px;
+        border-bottom: 1px solid gray;
+      }
+
+      .search button {
+        background-color: red;
+        color: white;
+        padding: 5px 10px;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="viewDiv"></div>
+    <div class="controls">
+      <div class="Draw">
+        <button id="drawPoint">Draw Point</button>
+        <button id="drawCircle">Draw Circle</button>
+      </div>
+      <div class="radius">
+        <p><b>Circle Radius:</b></p>
+        <input
+          class="slider"
+          type="range"
+          id="radiusSlider"
+          min="1"
+          max="8000"
+          value="100"
+          step="1"
+        />
+        <span id="radiusValue">100km</span>
+      </div>
+      <div class="search">
+        <button id="searchButton">Search</button>
+      </div>
+      <div class="Clear">
+        <button id="clearPoints">Clear Points</button>
+        <button id="clearCircles">Clear Circles</button>
+      </div>
+    </div>
+  </body>
+</html>
